@@ -1,6 +1,6 @@
 /* GET home page */
 module.exports.homeList = function (req, res) {
-  res.render('index', { title: 'Home' });
+  res.render('places-list', { title: 'Список особливих місць' });
 };
 
 /* GET places page */
