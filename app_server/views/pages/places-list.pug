@@ -3,60 +3,66 @@ extends ../layouts/layout
 block content
 	h1.title= title
 
-	.places-list
-		.box.places-item
-			article.media
-				.media-left
-					figure.image.is-64x64
-						img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
+	.columns
+		.column.is-4-desktop.is-12-mobile
+			h2.subtitle Знаходитесь в пошуках особливого місця?
+			p Ми можемо вам дещо порадити.
 
-				.media-content
-					.content
-						p.is-size-5
-							strong Назва особливого місця
+		.column.is-8-desktop.is-12-mobile.places-list
+			.box.places-item
+				article.media
+					.media-left
+						figure.image.is-64x64
+							img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
 
-						p
-							span.fa.fa-star.checked
-							span.fa.fa-star.checked
-							span.fa.fa-star.checked
-							span.fa.fa-star
-							span.fa.fa-star
+					.media-content
+						.content
+							p.is-size-5
+								strong Назва особливого місця
 
-						p Адресса особливого місця
+							p
+								span.fa.fa-star.checked
+								span.fa.fa-star.checked
+								span.fa.fa-star.checked
+								span.fa.fa-star
+								span.fa.fa-star
 
-						p
-							span.tag.is-success Їжа
-							span.tag.is-success Холодні напої
-							span.tag.is-success Wi-Fi
-							
-				.media-right
-					p.tag.is-medium.is-warning 200м.
+							p Адреса особливого місця
+
+							p
+								span.tag.is-success Їжа
+								span.tag.is-success Холодні напої
+								span.tag.is-success Wi-Fi
+
+					.media-right
+						p.tag.is-medium.is-warning 200м.
 
 
-		.box.places-item
-			article.media
-				.media-left
-					figure.image.is-64x64
-						img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
+			.box.places-item
+				article.media
+					.media-left
+						figure.image.is-64x64
+							img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
 
-				.media-content
-					.content
-						p.is-size-5
-							strong Назва особливого місця
+					.media-content
+						.content
+							p.is-size-5
+								strong Назва особливого місця
 
-						p
-							span.fa.fa-star.checked
-							span.fa.fa-star.checked
-							span.fa.fa-star.checked
-							span.fa.fa-star
-							span.fa.fa-star
+							p
+								span.fa.fa-star.checked
+								span.fa.fa-star.checked
+								span.fa.fa-star.checked
+								span.fa.fa-star
+								span.fa.fa-star
 
-						p Адресса особливого місця
+							p Адреса особливого місця
 
-						p
-							span.tag.is-success Їжа
-							span.tag.is-success Холодні напої
-							span.tag.is-success Wi-Fi
+							p
+								span.tag.is-success Їжа
+								span.tag.is-success Холодні напої
+								span.tag.is-success Wi-Fi
 
-				.media-right
-					p.tag.is-medium.is-warning 200м.
+					.media-right
+						p.tag.is-medium.is-warning 200м.
+
