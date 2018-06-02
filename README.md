@@ -2,7 +2,7 @@
 MEAN Project
  
 <p align="center">
-    <img width="768" height="310" src="./src/assets/pics/mean_cycle.jpg">
+    <img width="768" height="310" src="https://raw.githubusercontent.com/MarynaHapon/AcousticData/master/src/assets/pics/mean_cycle.jpg">
 </p>
 
 ## Versions
