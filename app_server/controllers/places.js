@@ -5,7 +5,7 @@ module.exports.homeList = function (req, res) {
 
 /* GET places page */
 module.exports.placeInfo = function (req, res) {
-  res.render('index', { title: 'Places info' });
+  res.render('place-info', { title: 'Places info' });
 };
 
 /* GET add review page */

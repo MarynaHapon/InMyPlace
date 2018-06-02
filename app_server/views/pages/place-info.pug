@@ -1,0 +1,98 @@
+extends ../layouts/layout
+
+block content
+	h1.title.is-1 Кафе 'Котовичі'
+
+	.columns
+		.column.is-8-desktop.is-12-mobile.places-list
+
+			.columns
+				.column.is-6-desktop.is-12-mobile
+					h4.title.is-4.place-address Україна, м. Київ, вул. Кота Котовича, буд 9
+
+					p.place-rate
+						span.fa.fa-star.checked
+						span.fa.fa-star.checked
+						span.fa.fa-star.checked
+						span.fa.fa-star
+						span.fa.fa-star
+
+					.content
+						table
+							thead
+								tr
+									th(colspan='2') Години роботи
+
+							tbody
+								tr
+									td Понеділок - П'ятниця
+									td 7:00 - 23:00
+								tr
+									td Субота
+									td 7:00 - 24:00
+								tr
+									td Неділя
+									td 9:00 - 24:00
+
+					p.place-tag
+						span.tag.is-success Їжа
+						span.tag.is-success Холодні напої
+						span.tag.is-success Wi-Fi
+
+
+				.column.is-6-desktop.is-12-mobile
+					.box
+						img(src='images/map.png', alt='map')
+
+			.columns
+				.column
+					.box
+
+						.level
+							.level-left
+								h4.title.is-4 Відгуки
+
+							.level-right
+								a.button.is-success Залишити відгук
+
+
+						.message.is-small
+							.message-header
+								p
+									span.user-name Марина Гапон
+									span.user-date #{', 2 липня 2018р.'}
+								p.place-rate
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star
+
+							.message-body
+								| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								strong Pellentesque risus mi
+								| , tempus quis placerat ut, porta nec nulla.
+
+
+						.message.is-small
+							.message-header
+								p
+									span.user-name Маруся Гапон
+									span.user-date #{', 1 липня 2018р.'}
+								p.place-rate
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+									span.fa.fa-star.checked
+
+							.message-body
+								| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								strong Pellentesque risus mi
+								| , tempus quis placerat ut, porta nec nulla.
+
+
+
+		.column.is-4-desktop.is-12-mobile
+			h2.title.is-4 Дане місце є особливим
+			p Бо кота Котовича.
