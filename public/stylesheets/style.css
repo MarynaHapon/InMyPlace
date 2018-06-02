@@ -1,8 +1,7 @@
 @import "library/bulma.css";
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-a {
-  color: #00b7ff;
+#logo {
+  margin: 0 0.5rem 0 0;
 }
