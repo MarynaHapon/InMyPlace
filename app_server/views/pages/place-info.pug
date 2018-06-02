@@ -1,10 +1,10 @@
 extends ../layouts/layout
 
 block content
-	h1.title.is-1 Кафе 'Котовичі'
+	h1.title.is-2 Кафе 'Котовичі'
 
 	.columns
-		.column.is-8-desktop.is-12-mobile.places-list
+		.column.is-8-desktop.is-12-tablet.is-12-mobile.places-list
 
 			.columns
 				.column.is-6-desktop.is-12-mobile
@@ -35,9 +35,9 @@ block content
 									td 9:00 - 24:00
 
 					p.place-tag
-						span.tag.is-success Їжа
-						span.tag.is-success Холодні напої
-						span.tag.is-success Wi-Fi
+						span.tag.is-primary Їжа
+						span.tag.is-primary Холодні напої
+						span.tag.is-primary Wi-Fi
 
 
 				.column.is-6-desktop.is-12-mobile
@@ -53,10 +53,10 @@ block content
 								h4.title.is-4 Відгуки
 
 							.level-right
-								a.button.is-success Залишити відгук
+								a(href='/place/review/new').button.is-primary Залишити відгук
 
 
-						.message.is-small
+						.message.is-small.is-dark
 							.message-header
 								p
 									span.user-name Марина Гапон
@@ -74,7 +74,7 @@ block content
 								| , tempus quis placerat ut, porta nec nulla.
 
 
-						.message.is-small
+						.message.is-small.is-dark
 							.message-header
 								p
 									span.user-name Маруся Гапон
@@ -93,6 +93,7 @@ block content
 
 
 
-		.column.is-4-desktop.is-12-mobile
+		.column.is-4-desktop.is-12-tablet.is-12-mobile
 			h2.title.is-4 Дане місце є особливим
-			p Бо кота Котовича.
+			p.text Притримується принципів унікальності і дружньої атмосфери, позиціонуючи себе як демократичне кафе.
+			p.text Наявність власної кухні в, приготування страв із свіжих продуктів (нема заморозки та напівфабрикатів), схема самообслуговування; для клієнта існує можливість створювати свої власні варіанти страв; максимальна візуалізація виготовлення брендових страв; демократична атмосфера закладів; ексклюзивність музичного супроводу.

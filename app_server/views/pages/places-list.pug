@@ -1,68 +1,32 @@
 extends ../layouts/layout
 
 block content
-	h1.title= title
-
 	.columns
-		.column.is-4-desktop.is-12-mobile
-			h2.subtitle Знаходитесь в пошуках особливого місця?
+		.column.is-4-desktop.is-5-tablet.is-12-mobile
+			h1.title.is-1 In My Place - це сховище наших особливих місць
+			p Знаходитесь в пошуках особливого місця?
 			p Ми можемо вам дещо порадити.
 
-		.column.is-8-desktop.is-12-mobile.places-list
-			.box.places-item
+		.column.is-8-desktop.is-7-tablet.is-12-mobile.places-list
+			a(href='/place').box.places-item
 				article.media
 					.media-left
 						figure.image.is-64x64
 							img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-
 					.media-content
 						.content
 							p.is-size-5
-								strong Назва особливого місця
-
+								strong Кафе 'Котовичі'
 							p.place-rate
 								span.fa.fa-star.checked
 								span.fa.fa-star.checked
 								span.fa.fa-star.checked
 								span.fa.fa-star
 								span.fa.fa-star
-
-							p.place-address Адреса особливого місця
-
+							p.place-address Україна, м. Київ, вул. Кота Котовича, буд 9
 							p.place-tag
-								span.tag.is-success Їжа
-								span.tag.is-success Холодні напої
-								span.tag.is-success Wi-Fi
-
+								span.tag.is-primary Їжа
+								span.tag.is-primary Холодні напої
+								span.tag.is-primary Wi-Fi
 					.media-right
-						p.tag.is-medium.is-warning 200м.
-
-
-			.box.places-item
-				article.media
-					.media-left
-						figure.image.is-64x64
-							img(src='https://bulma.io/images/placeholders/128x128.png', alt='Image')
-
-					.media-content
-						.content
-							p.is-size-5
-								strong Назва особливого місця
-
-							p.place-rate
-								span.fa.fa-star.checked
-								span.fa.fa-star.checked
-								span.fa.fa-star.checked
-								span.fa.fa-star
-								span.fa.fa-star
-
-							p.place-address Адреса особливого місця
-
-							p.place-tag
-								span.tag.is-success Їжа
-								span.tag.is-success Холодні напої
-								span.tag.is-success Wi-Fi
-
-					.media-right
-						p.tag.is-medium.is-warning 200м.
-
+						p.tag.is-medium.is-warning 500м.

@@ -1,7 +1,16 @@
-footer.footer
+footer.footer.has-shadow
   .container
     .content.has-text-centered
-      p
-        | ©
-        strong #{' Hapon M.V., '}
-        | 2018
+
+      .level
+        .level-left
+          p
+            a(href='/') Список
+            span= ' / '
+            a(href='/about') Про нас
+
+        .level-right
+          p
+            | ©
+            strong #{' Hapon M.V., '}
+            | 2018

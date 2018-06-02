@@ -1,4 +1,14 @@
 @import "library/bulma.css";
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&subset=cyrillic-ext");
+body {
+  font: 14px 'Roboto', "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.text {
+  text-align: justify;
+}
+.text + .text {
+  margin: 10px 0 0 0;
+}
 #logo {
   margin: 0 0.5rem 0 0;
 }
@@ -11,4 +21,7 @@
 .place-tag span,
 .place-rate span {
   margin: 0 5px 0 0;
+}
+.places-list {
+  overflow-y: hidden;
 }

@@ -1,23 +1,66 @@
 extends ../layouts/layout
 
 block content
-	h1.title Про нас
+	h1.title.is-2 Про нас
 
-	.box
-		article.media
-			figure.media-left
-				p.image.is-128x128
-					img(src='https://bulma.io/images/placeholders/128x128.png')
+	.columns
+		.column.is-4-tablet.is-12-mobile
+			.card
+				.card-image
+					figure.image.is-4by3
+						img(src='images/cat.gif', alt='Placeholder image')
+				.card-content
+					.media
+						.media-left
+							figure.image.is-48x48
+								img(src='images/cat-white.jpg', alt='Placeholder image')
+						.media-content
+							p.title.is-4 Артеміс
+							p.subtitle.is-6 marynahapon@gmail.com
+					.content
+						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						| Phasellus nec iaculis mauris.
 
-			.media-content
-				.content
-					p
-						strong Марина Гапон
+						br
+						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
 
-					p dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
 
-				nav.level.is-mobile
-					.level-left
-						a.level-item.button.is-rounded(href='https://github.com/MarynaHapon', target='_blancked') GitHub
+		.column.is-4-tablet.is-12-mobile
+			.card
+				.card-image
+					figure.image.is-4by3
+						img(src='images/cat-smart.gif', alt='Placeholder image')
+				.card-content
+					.media
+						.media-left
+							figure.image.is-48x48
+								img(src='images/cat-white.jpg', alt='Placeholder image')
+						.media-content
+							p.title.is-4 Діана
+							p.subtitle.is-6 marynahapon@gmail.com
+					.content
+						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						| Phasellus nec iaculis mauris.
 
-			//.media-right
+						br
+						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
+
+		.column.is-4-tablet.is-12-mobile
+			.card
+				.card-image
+					figure.image.is-4by3
+						img(src='images/cat-cute.gif', alt='Placeholder image')
+				.card-content
+					.media
+						.media-left
+							figure.image.is-48x48
+								img(src='images/cat-white.jpg', alt='Placeholder image')
+						.media-content
+							p.title.is-4 Луна
+							p.subtitle.is-6 marynahapon@gmail.com
+					.content
+						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						| Phasellus nec iaculis mauris.
+
+						br
+						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
