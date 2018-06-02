@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block content
+	h1.title #{'Залишити відгук до '}
+		span Кафе 'Котовичі'
+
+	.box.columns
+		.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
+
+			.field
+				label.label Ваше ім'я
+				.control
+					input.input(type='text', placeholder='Ім\'я Прізвище')
+
+			.field
+				label.label Ваша оцінка
+				.control
+					label.radio
+						input(type='number', name='rate', min='0', max='5', value='5')
+
+			.field
+				label.label Ваш відгук
+				.control
+					textarea.textarea(placeholder='Ваш відгук')
+
+			.field.is-grouped
+				.control
+					button.button.is-link Залишити коментар
