@@ -112,5 +112,32 @@ module.exports.placeInfo = function (req, res) {
 
 /* GET add review page */
 module.exports.addReview = function (req, res) {
-  res.render('place-review-form', { title: 'Add review' });
+  res.render('place-review-form', {
+    title: 'Add review',
+
+    form: {
+      title: 'Залишити відгук до',
+      name: {
+        label: 'Ваше ім\'я',
+        placeholder: 'Ім\'я Прізвище'
+      },
+      rating: {
+        label: 'Ваша оцінка'
+      },
+      comment: {
+        label: 'Ваш відгук',
+        placeholder: 'Ваш відгук'
+      },
+      btn: 'Залишити коментар'
+    },
+
+    place: {
+      name: 'Кафе \'Котовичі\'',
+      form: {
+          name: '',
+          rating: '',
+          comment: ''
+      }
+    }
+  });
 };

@@ -1,34 +1,29 @@
 extends ../layouts/layout
 
 block content
-	h1.title.is-2 #{'Залишити відгук до '}
-		span Кафе 'Котовичі'
+	h1.title.is-2= form.title + ' ' + place.name
 
 	.columns
 		.box.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
 
 			.field
-				label.label Ваше ім'я
+				label.label= form.name.label
 				.control
-					input.input.is-primary(type='text', placeholder='Ім\'я Прізвище')
+					input.input.is-primary(type='text', placeholder= form.name.placeholder)
 
 			.field
-				label.label Ваша оцінка
+				label.label= form.rating.label
 				.control
 					.select.is-primary
 						select
-							option 0
-							option 1
-							option 2
-							option 3
-							option 4
-							option 5
+							- for (var i = 0; i <= 5; i++)
+								option= i
 
 			.field
-				label.label Ваш відгук
+				label.label= form.comment.label
 				.control
-					textarea.textarea.is-primary(placeholder='Ваш відгук')
+					textarea.textarea.is-primary(placeholder= form.comment.placeholder)
 
 			.field.is-grouped
 				.control
-					a(href='/place').button.is-primary Залишити коментар
+					a(href='/place').button.is-primary= form.btn
