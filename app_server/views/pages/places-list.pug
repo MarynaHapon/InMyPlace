@@ -1,4 +1,6 @@
+include ../mixins/place-rating
 extends ../layouts/layout
+
 
 block content
 	.columns
@@ -22,11 +24,7 @@ block content
 									strong= place.name
 
 								p.place-rate
-									- for (var i = 1; i <= place.rating; i++)
-										span.fa.fa-star.checked
-
-									- for (i = place.rating; i < 5; i++)
-										span.fa.fa-star
+									+placeRating( place.rating )
 
 								p.place-address= place.address
 

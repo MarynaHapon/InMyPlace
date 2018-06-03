@@ -1,0 +1,6 @@
+mixin placeRating(rating)
+	- for (var i = 1; i <= rating; i++)
+		span.fa.fa-star.checked
+
+	- for (i = rating; i < 5; i++)
+		span.fa.fa-star
