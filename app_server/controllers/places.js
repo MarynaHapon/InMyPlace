@@ -59,7 +59,55 @@ module.exports.homeList = function (req, res) {
 
 /* GET places page */
 module.exports.placeInfo = function (req, res) {
-  res.render('place-info', { title: 'Places info' });
+  res.render('place-info', {
+    title: 'Places info',
+
+    place: {
+      name: 'Кафе \'Котовичі\'',
+      address: 'Україна, м. Київ, вул. Кота Котовича, буд 9',
+      rating: '5',
+      facilities: ['Їжа', 'Холодні напої', 'Wi-Fi', 'Лаундж зона'],
+      distance: '1500м',
+
+      workHours: {
+        title: 'Години роботи',
+
+        body: [
+          {'7:00 - 23:00': 'Понеділок - П\'ятниця'},
+          {'7:00 - 24:00': 'Субота'},
+          {'9:00 - 24:00': 'Неділя'}
+        ]
+      },
+
+      map: {
+        src: 'images/map.png',
+        alt: 'map'
+      },
+
+      comments: {
+        title: 'Відгуки',
+        btn: 'Залишити відгук',
+
+        body: [
+          {
+            name: 'Марина Гапон',
+            date: '2 липня 2018р',
+            rating: '4',
+            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla.'
+          }
+        ]
+      },
+
+      sidebar: {
+        title: 'Дане місце є особливим',
+
+        body: [
+          'Притримується принципів унікальності і дружньої атмосфери, позиціонуючи себе як демократичне кафе.',
+          'Наявність власної кухні в, приготування страв із свіжих продуктів (нема заморозки та напівфабрикатів), схема самообслуговування; для клієнта існує можливість створювати свої власні варіанти страв; максимальна візуалізація виготовлення брендових страв; демократична атмосфера закладів; ексклюзивність музичного супроводу.'
+        ]
+      }
+    }
+  });
 };
 
 /* GET add review page */
