@@ -134,9 +134,9 @@ module.exports.addReview = function (req, res) {
     place: {
       name: 'Кафе \'Котовичі\'',
       form: {
-          name: '',
-          rating: '',
-          comment: ''
+        name: '',
+        rating: '',
+        comment: ''
       }
     }
   });

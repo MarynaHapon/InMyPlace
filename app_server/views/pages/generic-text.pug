@@ -1,66 +1,28 @@
 extends ../layouts/layout
 
 block content
-	h1.title.is-2 Про нас
+	h1.title.is-2= about.title
 
 	.columns
-		.column.is-4-tablet.is-12-mobile
-			.card
-				.card-image
-					figure.image.is-4by3
-						img(src='images/cat.gif', alt='Placeholder image')
-				.card-content
-					.media
-						.media-left
-							figure.image.is-48x48
-								img(src='images/cat-white.jpg', alt='Placeholder image')
-						.media-content
-							p.title.is-4 Артеміс
-							p.subtitle.is-6 marynahapon@gmail.com
-					.content
-						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						| Phasellus nec iaculis mauris.
 
-						br
-						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
+		each item in items
 
+			.column.is-4-tablet.is-12-mobile
+				.card
+					.card-image
+						figure.image.is-4by3
+							img(src= item.banner.src, alt= item.banner.alt)
 
-		.column.is-4-tablet.is-12-mobile
-			.card
-				.card-image
-					figure.image.is-4by3
-						img(src='images/cat-smart.gif', alt='Placeholder image')
-				.card-content
-					.media
-						.media-left
-							figure.image.is-48x48
-								img(src='images/cat-white.jpg', alt='Placeholder image')
-						.media-content
-							p.title.is-4 Діана
-							p.subtitle.is-6 marynahapon@gmail.com
-					.content
-						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						| Phasellus nec iaculis mauris.
+					.card-content
+						.media
+							.media-left
+								figure.image.is-48x48
+									img(src= item.img.src, alt= item.img.alt)
 
-						br
-						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
+							.media-content
+								p.title.is-4= item.title
+								p.subtitle.is-6= item.subtitle
 
-		.column.is-4-tablet.is-12-mobile
-			.card
-				.card-image
-					figure.image.is-4by3
-						img(src='images/cat-cute.gif', alt='Placeholder image')
-				.card-content
-					.media
-						.media-left
-							figure.image.is-48x48
-								img(src='images/cat-white.jpg', alt='Placeholder image')
-						.media-content
-							p.title.is-4 Луна
-							p.subtitle.is-6 marynahapon@gmail.com
-					.content
-						| Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						| Phasellus nec iaculis mauris.
-
-						br
-						time(datetime='2016-1-1') 11:09 PM - 1 Jan 2018
+						.content
+							p= item.content
+							p= item.date
