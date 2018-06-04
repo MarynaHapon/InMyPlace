@@ -18,14 +18,18 @@ block content
 						table
 							thead
 								tr
-									th(colspan='2')= place.workHours.title
+									th(colspan='2') Години роботи
 
 							tbody
-								each item in place.workHours.body
-									each days, hours in item
+								each item in place.workHours
 										tr
-											td= days
-											td= hours
+											td= item.days
+
+											if item.closed === false
+												td= item.opening
+
+											if item.closed === true
+												td Зачинено
 
 					p.place-tag
 						each facility in place.facilities

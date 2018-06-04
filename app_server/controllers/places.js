@@ -69,15 +69,24 @@ module.exports.placeInfo = function (req, res) {
       facilities: ['Їжа', 'Холодні напої', 'Wi-Fi', 'Лаундж зона'],
       distance: '1500м',
 
-      workHours: {
-        title: 'Години роботи',
-
-        body: [
-          {'7:00 - 23:00': 'Понеділок - П\'ятниця'},
-          {'7:00 - 24:00': 'Субота'},
-          {'9:00 - 24:00': 'Неділя'}
-        ]
-      },
+      workHours: [
+        {
+          days: 'Понеділок - П’ятниця',
+          opening: '7.00',
+          closing: '21.00',
+          closed: false
+        },
+        {
+          days: 'Субота',
+          opening: '8.00',
+          closing: '21.00',
+          closed: false
+        },
+        {
+          days: 'Неділя',
+          closed: true
+        }
+      ],
 
       map: {
         src: 'images/map.png',
