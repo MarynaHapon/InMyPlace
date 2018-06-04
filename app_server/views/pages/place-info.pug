@@ -45,13 +45,13 @@ block content
 					.box
 						.level
 							.level-left
-								h4.title.is-4= place.comments.title
+								h4.title.is-4 Відгуки
 
 							.level-right
-								a(href='/place/review/new').button.is-primary= place.comments.btn
+								a(href='/place/review/new').button.is-primary Залишити відгук
 
 						.message.is-small.is-dark
-							each author in place.comments.body
+							each author in place.comments
 								.message-header
 									p
 										span.user-name= author.name

@@ -93,19 +93,14 @@ module.exports.placeInfo = function (req, res) {
         alt: 'map'
       },
 
-      comments: {
-        title: 'Відгуки',
-        btn: 'Залишити відгук',
-
-        body: [
-          {
-            name: 'Марина Гапон',
-            date: '2 липня 2018р',
-            rating: '4',
-            comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla.'
-          }
-        ]
-      },
+      comments: [
+        {
+          name: 'Марина Гапон',
+          date: '2 липня 2018р',
+          rating: '4',
+          comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla.'
+        }
+      ],
 
       sidebar: {
         title: 'Дане місце є особливим',
