@@ -62,3 +62,4 @@ process.on('SIGTERM', function () {
 
 /* Mongoose schema */
 require('./places');
+require('./about');

@@ -35,3 +35,6 @@ var placeSchema = new mongoose.Schema({
     comments: [commentSchema],
     sidebar: sidebarInfoSchema
 });
+
+mongoose.model('Place', placeSchema);
+
