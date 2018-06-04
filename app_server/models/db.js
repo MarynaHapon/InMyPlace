@@ -59,3 +59,6 @@ process.on('SIGTERM', function () {
         process.exit(0);
     });
 });
+
+/* Mongoose schema */
+require('./places');
