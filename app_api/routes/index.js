@@ -22,16 +22,16 @@ router.delete('/places/:placeid', controllerPlaces.placesDeleteOne);
 
 /* Comment */
 /* CREATE comment */
-router.post('/places/:locationid/comments', controllerComments.commentsCreate);
+router.post('/places/:placeid/comments', controllerComments.commentsCreate);
 
 /* READ comment */
-router.get('/places/:locationid/comments/:commentid', controllerComments.commentsReadOne);
+router.get('/places/:placeid/comments/:commentid', controllerComments.commentsReadOne);
 
 /* UPDATE comment */
-router.put('/places/:locationid/comments/:commentid', controllerComments.commentsUpdateOne);
+router.put('/places/:placeid/comments/:commentid', controllerComments.commentsUpdateOne);
 
 /* DELETE comment */
-router.delete('/places/:locationid/comments/:commentid', controllerComments.commentsDeleteOne);
+router.delete('/places/:placeid/comments/:commentid', controllerComments.commentsDeleteOne);
 
 
 module.exports = router;
