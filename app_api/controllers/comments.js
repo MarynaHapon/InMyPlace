@@ -208,5 +208,55 @@ module.exports.commentsUpdateOne = function (req, res) {
 };
 
 module.exports.commentsDeleteOne = function (req, res) {
+    if (!req.params.placeid || !req.params.commentid) {
+        sendJsonResponse(res, 404, {
+            "message": "Not found, placeid and commentid are both required"
+        });
 
+        return;
+    }
+
+    PlaceModel
+        .findById(req.params.placeid)
+        .select('comments')
+        .exec(function (err, place) {
+            if (!place) {
+                sendJsonResponse(res, 404, {
+                    "message": "placeid not found"
+                });
+
+                return;
+            }
+            else if (err) {
+                sendJsonResponse(res, 400, err);
+
+                return;
+            }
+
+            if (place.comments && place.comments.length > 0) {
+                if (!place.comments.id(req.params.commentid)) {
+                    sendJsonResponse(res, 404, {
+                        "message": "commentid not found"
+                    })
+                }
+                else {
+                    place.comments.id(req.params.commentid).remove();
+
+                    place.save(function (err) {
+                        if (err) {
+                            sendJsonResponse(res, 404, err);
+                        }
+                        else {
+                            updateAverageRating(place._id);
+                            sendJsonResponse(res, 204, null);
+                        }
+                    });
+                }
+            }
+            else {
+                sendJsonResponse(res, 404, {
+                    "message": "No comment to delete"
+                });
+            }
+        })
 };
