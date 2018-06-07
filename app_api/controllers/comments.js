@@ -17,6 +17,31 @@ var updateAverageRating = function () {
         });
 };
 
+var doSetAverageRating = function (place) {
+    var i, commentCount, ratingAverage, ratingTotal;
+
+    if (place.comments && place.comments.length > 0) {
+        commentCount = place.comments.length;
+        ratingTotal = 0;
+
+        for (i = 0; i < commentCount; i++) {
+            ratingTotal = ratingTotal + place.comments[i].rating;
+        }
+
+        ratingAverage = parseInt(ratingTotal / commentCount, 10);
+        place.rating = ratingAverage;
+
+        place.save(function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log('Average rating update to ', ratingAverage)
+            }
+        })
+    }
+};
+
 var doAddComment = function (req, res, place) {
   if (!place) {
       sendJsonResponse(res, 404, {
