@@ -190,5 +190,24 @@ module.exports.placesUpdateOne = function (req, res) {
 };
 
 module.exports.placesDeleteOne = function (req, res) {
-    sendJsonResponse(res, 200, {"status": "success"})
+    var placeid = req.params.placeid;
+
+    if (placeid) {
+        PlaceModel
+            .findByIdAndRemove(placeid)
+            .exec(function (err, place) {
+                if (err) {
+                    sendJsonResponse(res, 404, err);
+
+                    return;
+                }
+
+                sendJsonResponse(res, 204, null);
+            });
+    }
+    else {
+        sendJsonResponse(res, 404, {
+            "message": "No placeid"
+        });
+    }
 };
