@@ -28,41 +28,43 @@ module.exports.placesListByDistance = function (req, res) {
     var lng = parseFloat(req.query.lng);
     var lat = parseFloat(req.query.lat);
 
-    var point = {
-        type: "Point",
-        coordinates: [lng, lat]
-    };
+    if (!lng || !lat) {
+        sendJsonResponse(res, 404, {
+            "message": "lng and lat query parameters are required"
+        });
 
-    var geoOption = {
-        spherical: true,
-        maxDistance: theEarth.getRadsFromDistance(20),
-        num: 10
-    };
-
+        return;
+    }
+    
     PlaceModel.aggregate(
         [{
             $geoNear: {
-                'near': {'type':'Point', 'coordinates':[lng, lat]},
+                'near': {'type': 'Point', 'coordinates': [lng, lat]},
                 'spherical': true,
-                'maxdistance': theEarth.getRadsFromDistance(20),
+                'maxDistance': theEarth.getRadsFromDistance(20),
                 'num':10,
                 'distanceField': 'dist'
             }
         }], function(err, results) {
-            var locations = [];
+            var places = [];
 
-            results.forEach(function (doc) {
-                locations.push({
-                    distance: theEarth.getDistanceFromRads(doc.dist),
-                    name: doc.name,
-                    address: doc.address,
-                    facilities: doc.facilities,
-                    rating: doc.rating,
-                    _id: doc._id
+            if (err) {
+                sendJsonResponse(res, 404, err);
+            }
+            else {
+                results.forEach(function (doc) {
+                    places.push({
+                        distance: theEarth.getDistanceFromRads(doc.dist),
+                        name: doc.name,
+                        address: doc.address,
+                        facilities: doc.facilities,
+                        rating: doc.rating,
+                        _id: doc._id
+                    });
                 });
-            });
 
-            sendJsonResponse(res, 200, locations);
+                sendJsonResponse(res, 200, places);
+            }
         });
 };
 
