@@ -21,6 +21,21 @@ var renderHomePage = function (req, res, responseBody) {
     });
 };
 
+var formatDistance = function (distance) {
+    var numDistance, unit;
+
+    if (distance > 1) {
+        numDistance = parseFloat(distance).toFixed(1);
+        unit = ' км';
+    }
+    else {
+        numDistance = parseFloat(distance * 1000,10);
+        unit = ' м';
+    }
+
+    return numDistance + unit;
+};
+
 /* GET home page */
 module.exports.homeList = function (req, res) {
   var path = '/api/places';
@@ -36,7 +51,13 @@ module.exports.homeList = function (req, res) {
   };
 
   request(requestOptions, function (err, response, body) {
-      renderHomePage(req, res, body);
+      var data = body;
+
+      for (var i = 0; i < data.length; i++) {
+          data[i].distance = formatDistance(data[i].distance);
+      }
+
+      renderHomePage(req, res, data);
   });
 };
 
