@@ -12,7 +12,7 @@ var renderHomePage = function (req, res, responseBody) {
     var message;
 
     if (!(responseBody instanceof Array)) {
-        message = 'API lookup error';
+        message = 'Помилка пошуку API';
         responseBody = [];
     }
     else {

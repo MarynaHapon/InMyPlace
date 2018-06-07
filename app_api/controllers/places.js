@@ -28,7 +28,7 @@ module.exports.placesListByDistance = function (req, res) {
     var lng = parseFloat(req.query.lng);
     var lat = parseFloat(req.query.lat);
 
-    if (!lng || !lat) {
+    if ( (!lng && lng!==0) || (!lat && lat!==0)) {
         sendJsonResponse(res, 404, {
             "message": "lng and lat query parameters are required"
         });
