@@ -6,8 +6,55 @@ var sendJsonResponse = function (res, status, content) {
     res.json(content);
 };
 
-module.exports.commentsCreate = function (req, res) {
+var doAddComment = function (req, res, place) {
+  if (!place) {
+      sendJsonResponse(res, 404, {
+         "message": "placeid not found"
+      });
+  }
+  else {
+      place.comments.push({
+         name: req.body.name,
+         rating: req.body.rating,
+         comment: req.body.comment
+      });
 
+      place.save(function (err, place) {
+          var thisComment;
+
+          if (err) {
+              sendJsonResponse(res, 400, err);
+          }
+          else {
+              updateAverageRating(place._id);
+              thisComment = place.comments[place.comments.length - 1];
+              sendJsonResponse(res, 201, thisComment);
+          }
+      })
+  }
+};
+
+module.exports.commentsCreate = function (req, res) {
+    var placeid = req.params.placeid;
+
+    if (placeid) {
+        PlaceModel
+            .findById(placeid)
+            .select('comments')
+            .exec(function (err, place) {
+                if (err) {
+                    sendJsonResponse(res, 404, err);
+                }
+                else {
+                    doAddComment(req, res, place);
+                }
+            });
+    }
+    else {
+        sendJsonResponse(res, 404, {
+            "message": "Not found, placeid is required"
+        });
+    }
 };
 
 module.exports.commentsReadOne = function (req, res) {
