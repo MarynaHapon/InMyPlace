@@ -148,7 +148,63 @@ module.exports.commentsReadOne = function (req, res) {
 };
 
 module.exports.commentsUpdateOne = function (req, res) {
+    if (!req.params.placeid || !req.params.commentid) {
+        sendJsonResponse(res, 404, {
+           "message": "Not found, placeid and commentid are both required"
+        });
 
+        return;
+    }
+
+    PlaceModel
+        .findById(req.params.placeid)
+        .select('comments')
+        .exec(function (err, place) {
+            var thisComment;
+
+            if (!place) {
+                sendJsonResponse(res, 404, {
+                    "message": "placeid not found"
+                });
+
+                return;
+            }
+            else if (err) {
+                sendJsonResponse(res, 400, err);
+
+                return;
+            }
+
+            if (place.comments && place.comments.length > 0) {
+                thisComment = place.comments.id(req.params.commentid);
+
+                if (!thisComment) {
+                    sendJsonResponse(res, 404, {
+                        "message": "commentid not found"
+                    });
+                }
+                else {
+                    thisComment.name = req.body.name;
+                    thisComment.rating = req.body.rating;
+                    thisComment.comment = req.body.comment;
+
+                    place.save(function (err, place) {
+                        if (err) {
+                            sendJsonResponse(res, 404, err);
+                        }
+                        else {
+                            updateAverageRating(place._id);
+                            sendJsonResponse(res, 200, thisComment);
+                        }
+                    });
+                }
+            }
+            else {
+                sendJsonResponse(res, 404, {
+                    "message": "No comment to update"
+                })
+            }
+        })
 };
 
 module.exports.commentsDeleteOne = function (req, res) {
