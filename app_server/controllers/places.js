@@ -9,6 +9,18 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 var renderHomePage = function (req, res, responseBody) {
+    var message;
+
+    if (!(responseBody instanceof Array)) {
+        message = 'API lookup error';
+        responseBody = [];
+    }
+    else {
+        if(!responseBody.length) {
+            message = 'Місць поруч не знайдено'
+        }
+    }
+
     res.render('places-list', {
         title: 'Список особливих місць',
 
@@ -17,7 +29,8 @@ var renderHomePage = function (req, res, responseBody) {
             subtitle: 'Знаходитесь в пошуках особливого місця? Ми можемо вам дещо порадити.'
         },
 
-        places: responseBody
+        places: responseBody,
+        message: message
     });
 };
 
@@ -53,8 +66,10 @@ module.exports.homeList = function (req, res) {
   request(requestOptions, function (err, response, body) {
       var data = body;
 
-      for (var i = 0; i < data.length; i++) {
-          data[i].distance = formatDistance(data[i].distance);
+      if (response.statusCode === 200 && data.length) {
+          for (var i = 0; i < data.length; i++) {
+              data[i].distance = formatDistance(data[i].distance);
+          }
       }
 
       renderHomePage(req, res, data);
