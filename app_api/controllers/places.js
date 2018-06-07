@@ -132,7 +132,61 @@ module.exports.placesReadOne = function (req, res) {
 };
 
 module.exports.placesUpdateOne = function (req, res) {
-    sendJsonResponse(res, 200, {"status": "success"})
+    if (!req.params.placeid) {
+        sendJsonResponse(res, 404, {
+            "message": "Not found, placeid is required"
+        });
+
+        return;
+    }
+
+    PlaceModel
+        .findById(req.params.placeid)
+        .select('-comments -rating')
+        .exec(function (err, place) {
+            if (!place) {
+                sendJsonResponse(res, 404, {
+                    "message": "placeid not found"
+                });
+
+                return;
+            }
+            else if (err) {
+                sendJsonResponse(res, 400, err);
+
+                return;
+            }
+
+            place.name = req.body.name;
+            place.address = req.body.address;
+            place.facilities = req.body.facilities.split(',');
+            place.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
+            place.workHours = [{
+                days: req.body.days1,
+                opening: req.body.opening1,
+                closing: req.body.closing1,
+                closed: req.body.closed1
+            }, {
+                days: req.body.days2,
+                opening: req.body.opening2,
+                closing: req.body.closing2,
+                closed: req.body.closed2
+            }, {
+                days: req.body.days3,
+                opening: req.body.opening3,
+                closing: req.body.closing3,
+                closed: req.body.closed3
+            }];
+
+            place.save(function (err, place) {
+                if (err) {
+                    sendJsonResponse(res, 404, err);
+                }
+                else {
+                    sendJsonResponse(res, 200, place);
+                }
+            });
+        });
 };
 
 module.exports.placesDeleteOne = function (req, res) {
