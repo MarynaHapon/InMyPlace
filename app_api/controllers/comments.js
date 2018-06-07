@@ -6,6 +6,17 @@ var sendJsonResponse = function (res, status, content) {
     res.json(content);
 };
 
+var updateAverageRating = function () {
+    PlaceModel
+        .findById(placeid)
+        .select('rating comments')
+        .exec(function (err, place) {
+            if (!err) {
+                doSetAverageRating(place);
+            }
+        });
+};
+
 var doAddComment = function (req, res, place) {
   if (!place) {
       sendJsonResponse(res, 404, {
