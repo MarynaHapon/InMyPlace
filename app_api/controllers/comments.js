@@ -6,17 +6,6 @@ var sendJsonResponse = function (res, status, content) {
     res.json(content);
 };
 
-var updateAverageRating = function () {
-    PlaceModel
-        .findById(placeid)
-        .select('rating comments')
-        .exec(function (err, place) {
-            if (!err) {
-                doSetAverageRating(place);
-            }
-        });
-};
-
 var doSetAverageRating = function (place) {
     var i, commentCount, ratingAverage, ratingTotal;
 
@@ -40,6 +29,17 @@ var doSetAverageRating = function (place) {
             }
         })
     }
+};
+
+var updateAverageRating = function (placeid) {
+    PlaceModel
+        .findById(placeid)
+        .select('rating comments')
+        .exec(function (err, place) {
+            if (!err) {
+                doSetAverageRating(place);
+            }
+        });
 };
 
 var doAddComment = function (req, res, place) {

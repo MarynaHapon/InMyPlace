@@ -151,5 +151,28 @@ module.exports.addComment = function (req, res) {
 };
 
 module.exports.doAddComment = function (req, res) {
+    var placeid = req.params.placeid;
+    var path = "/api/places/" + placeid + "/comments";
+
+    var postdata = {
+        name: req.body.name,
+        rating: parseFloat(req.body.rating, 10),
+        comment: req.body.comment
+    };
+
+    var requestOptions = {
+        url: apiOptions.server + path,
+        method: "POST",
+        json: postdata
+    };
+
+    request(requestOptions, function (err, response, body) {
+        if (response.statusCode === 201) {
+            res.redirect('/place/' + placeid)
+        }
+        else {
+            showError(req, res, response.statusCode);
+        }
+    });
 
 };

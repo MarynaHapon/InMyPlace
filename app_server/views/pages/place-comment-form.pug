@@ -9,20 +9,20 @@ block content
 			.field
 				label.label Ваше ім'я
 				.control
-					input.input.is-primary(type='text', placeholder="Ім'я Прізвище")
+					input.input.is-primary(type='text', placeholder="Ім'я Прізвище", name="name")
 
 			.field
 				label.label Ваша оцінка
 				.control
 					.select.is-primary
-						select
+						select(name="rating")
 							- for (var i = 0; i <= 5; i++)
 								option= i
 
 			.field
 				label.label Ваш відгук
 				.control
-					textarea.textarea.is-primary(placeholder="Ваш відгук")
+					textarea.textarea.is-primary(placeholder="Ваш відгук", name="comment")
 
 			.field.is-grouped
 				.control

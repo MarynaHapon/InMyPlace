@@ -3,6 +3,7 @@ var readLine = require('readline');
 var gracefulShutdown;
 
 var dbURI = 'mongodb://localhost/InMyPlace';
+//var dbURI = 'mongodb://admin:123hapon@ds016138.mlab.com:16138/inmyplace';
 
 if(process.env.NODE_ENV === 'production') {
     dbURI = 'mongodb://admin:123hapon@ds016138.mlab.com:16138/inmyplace';
