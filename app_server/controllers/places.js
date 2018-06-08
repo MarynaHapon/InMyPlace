@@ -86,6 +86,26 @@ var renderPlaceInfoPage = function (req, res, placeInfo) {
 
 };
 
+var showError = function (req, res, status) {
+    var title, message;
+
+    if (status === 400) {
+        title = "404, сторінка не знайдена";
+        message = "Схоже, ми не можемо знайти цю сторінку. Вибачте.";
+    }
+    else {
+        title = status + ", щось пішло не так";
+        message = "Упс, маємо помилку...";
+    }
+
+    res.status(status);
+    res.render('error', {
+        title: title,
+        message: message
+    })
+
+};
+
 /* GET place page */
 module.exports.placeInfo = function (req, res) {
     var path = '/api/places/' + req.params.placeid;
@@ -98,13 +118,17 @@ module.exports.placeInfo = function (req, res) {
     request(requestOptions, function (err, response, body) {
         var data = body;
 
-        data.coords = {
-          lng: body.coords[0],
-          lat: body.coords[1]
-        };
+        if (response.statusCode === 200) {
+            data.coords = {
+                lng: body.coords[0],
+                lat: body.coords[1]
+            };
 
-
-        renderPlaceInfoPage(req, res, data);
+            renderPlaceInfoPage(req, res, data);
+        }
+        else {
+            showError(req, res, response.statusCode);
+        }
     });
 };
 

@@ -1,6 +1,9 @@
 extends ../layouts/layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+
+  section.hero
+    .hero-body
+      .container
+        h1.title.has-text-warning= title
+        h2.subtitle= message
