@@ -49,6 +49,33 @@ var formatDistance = function (distance) {
     return numDistance + unit;
 };
 
+var getPlaceInfo = function (req, res, callback) {
+    var path = "/api/places/" + req.params.placeid;
+
+    var requestOptions = {
+        url: apiOptions.server + path,
+        method: "GET",
+        json: {}
+    };
+
+    request(requestOptions, function (err, response, body) {
+       var data = body;
+
+       if (response.statusCode === 200) {
+           data.coords = {
+               lng: body.coords[0],
+               lat: body.coords[1]
+           };
+
+           callback(req, res, data);
+       }
+       else {
+           showError(req, res, response.statusCode);
+       }
+
+    });
+};
+
 /* GET home page */
 module.exports.homeList = function (req, res) {
   var path = '/api/places';
@@ -75,8 +102,6 @@ module.exports.homeList = function (req, res) {
       renderHomePage(req, res, data);
   });
 };
-
-
 
 var renderPlaceInfoPage = function (req, res, placeInfo) {
     res.render('place-info', {
@@ -132,37 +157,40 @@ module.exports.placeInfo = function (req, res) {
     });
 };
 
+var renderCommentForm = function (req, res) {
+    res.render('place-comment-form', {
+        title: 'Add review',
+
+        form: {
+            title: 'Залишити відгук до',
+            name: {
+                label: 'Ваше ім\'я',
+                placeholder: 'Ім\'я Прізвище'
+            },
+            rating: {
+                label: 'Ваша оцінка'
+            },
+            comment: {
+                label: 'Ваш відгук',
+                placeholder: 'Ваш відгук'
+            },
+            btn: 'Залишити коментар'
+        },
+
+        place: {
+            name: 'Кафе \'Котовичі\'',
+            form: {
+                name: '',
+                rating: '',
+                comment: ''
+            }
+        }
+    });
+};
 
 /* GET add comment page */
 module.exports.addComment = function (req, res) {
-  res.render('place-comment-form', {
-    title: 'Add review',
-
-    form: {
-      title: 'Залишити відгук до',
-      name: {
-        label: 'Ваше ім\'я',
-        placeholder: 'Ім\'я Прізвище'
-      },
-      rating: {
-        label: 'Ваша оцінка'
-      },
-      comment: {
-        label: 'Ваш відгук',
-        placeholder: 'Ваш відгук'
-      },
-      btn: 'Залишити коментар'
-    },
-
-    place: {
-      name: 'Кафе \'Котовичі\'',
-      form: {
-        name: '',
-        rating: '',
-        comment: ''
-      }
-    }
-  });
+    renderCommentForm(res, req);
 };
 
 module.exports.doAddComment = function (req, res) {

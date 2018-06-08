@@ -4,7 +4,7 @@ block content
 	h1.title.is-2= form.title + ' ' + place.name
 
 	.columns
-		.box.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
+		form(action="", method="post", role="form").box.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
 
 			.field
 				label.label= form.name.label
@@ -26,4 +26,4 @@ block content
 
 			.field.is-grouped
 				.control
-					a(href='/place').button.is-primary= form.btn
+					input(type="submit").button.is-primary= form.btn
