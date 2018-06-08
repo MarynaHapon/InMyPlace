@@ -133,9 +133,9 @@ module.exports.placeInfo = function (req, res) {
 };
 
 
-/* GET add review page */
-module.exports.addReview = function (req, res) {
-  res.render('place-review-form', {
+/* GET add comment page */
+module.exports.addComment = function (req, res) {
+  res.render('place-comment-form', {
     title: 'Add review',
 
     form: {
@@ -163,4 +163,8 @@ module.exports.addReview = function (req, res) {
       }
     }
   });
+};
+
+module.exports.doAddComment = function (req, res) {
+
 };

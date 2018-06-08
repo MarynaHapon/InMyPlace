@@ -49,7 +49,7 @@ block content
 								h4.title.is-4 Відгуки
 
 							.level-right
-								a(href='/place/review/new').button.is-primary Залишити відгук
+								a(href='/place/' + place._id + '/comments/new').button.is-primary Залишити відгук
 
 						.message.is-small.is-dark
 							each author in place.comments
