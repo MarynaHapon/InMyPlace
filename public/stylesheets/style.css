@@ -25,3 +25,6 @@ body {
 .places-list {
   overflow-y: hidden;
 }
+.map {
+  height: 240px;
+}

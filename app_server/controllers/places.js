@@ -83,6 +83,7 @@ var renderPlaceInfoPage = function (req, res, placeInfo) {
         title: placeInfo.name,
         place: placeInfo
     });
+
 };
 
 /* GET place page */
@@ -101,6 +102,7 @@ module.exports.placeInfo = function (req, res) {
           lng: body.coords[0],
           lat: body.coords[1]
         };
+
 
         renderPlaceInfoPage(req, res, data);
     });
