@@ -1,18 +1,18 @@
 extends ../layouts/layout
 
 block content
-	h1.title.is-2= form.title + ' ' + place.name
+	h1.title.is-2= 'Залишити відгук до ' + name
 
 	.columns
 		form(action="", method="post", role="form").box.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
 
 			.field
-				label.label= form.name.label
+				label.label Ваше ім'я
 				.control
-					input.input.is-primary(type='text', placeholder= form.name.placeholder)
+					input.input.is-primary(type='text', placeholder="Ім'я Прізвище")
 
 			.field
-				label.label= form.rating.label
+				label.label Ваша оцінка
 				.control
 					.select.is-primary
 						select
@@ -20,10 +20,10 @@ block content
 								option= i
 
 			.field
-				label.label= form.comment.label
+				label.label Ваш відгук
 				.control
-					textarea.textarea.is-primary(placeholder= form.comment.placeholder)
+					textarea.textarea.is-primary(placeholder="Ваш відгук")
 
 			.field.is-grouped
 				.control
-					input(type="submit").button.is-primary= form.btn
+					button(type="submit").button.is-primary Залишити коментар

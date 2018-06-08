@@ -108,7 +108,6 @@ var renderPlaceInfoPage = function (req, res, placeInfo) {
         title: placeInfo.name,
         place: placeInfo
     });
-
 };
 
 var showError = function (req, res, status) {
@@ -128,7 +127,6 @@ var showError = function (req, res, status) {
         title: title,
         message: message
     })
-
 };
 
 /* GET place page */
@@ -138,41 +136,17 @@ module.exports.placeInfo = function (req, res) {
     });
 };
 
-var renderCommentForm = function (req, res) {
+var renderCommentForm = function (req, res, placeInfo) {
     res.render('place-comment-form', {
-        title: 'Add review',
-
-        form: {
-            title: 'Залишити відгук до',
-            name: {
-                label: 'Ваше ім\'я',
-                placeholder: 'Ім\'я Прізвище'
-            },
-            rating: {
-                label: 'Ваша оцінка'
-            },
-            comment: {
-                label: 'Ваш відгук',
-                placeholder: 'Ваш відгук'
-            },
-            btn: 'Залишити коментар'
-        },
-
-        place: {
-            name: 'Кафе \'Котовичі\'',
-            form: {
-                name: '',
-                rating: '',
-                comment: ''
-            }
-        }
+        title: placeInfo.name,
+        name: placeInfo.name
     });
 };
 
 /* GET add comment page */
 module.exports.addComment = function (req, res) {
     getPlaceInfo(req, res, function (req, res, responseData) {
-        renderCommentForm(res, req, responseData);
+        renderCommentForm(req, res, responseData);
     });
 };
 
