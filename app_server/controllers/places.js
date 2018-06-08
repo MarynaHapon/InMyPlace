@@ -133,27 +133,8 @@ var showError = function (req, res, status) {
 
 /* GET place page */
 module.exports.placeInfo = function (req, res) {
-    var path = '/api/places/' + req.params.placeid;
-    var requestOptions = {
-      url: apiOptions.server + path,
-      method: "GET",
-      json: {}
-    };
-
-    request(requestOptions, function (err, response, body) {
-        var data = body;
-
-        if (response.statusCode === 200) {
-            data.coords = {
-                lng: body.coords[0],
-                lat: body.coords[1]
-            };
-
-            renderPlaceInfoPage(req, res, data);
-        }
-        else {
-            showError(req, res, response.statusCode);
-        }
+    getPlaceInfo(req, res, function (req, res, responseData) {
+        renderPlaceInfoPage(req, res, responseData);
     });
 };
 
@@ -190,7 +171,9 @@ var renderCommentForm = function (req, res) {
 
 /* GET add comment page */
 module.exports.addComment = function (req, res) {
-    renderCommentForm(res, req);
+    getPlaceInfo(req, res, function (req, res, responseData) {
+        renderCommentForm(res, req, responseData);
+    });
 };
 
 module.exports.doAddComment = function (req, res) {
