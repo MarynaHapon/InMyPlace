@@ -1,6 +1,7 @@
 extends ../layouts/layout
 
 include ../mixins/place-rating
+include ../mixins/formatDate
 
 block content
 	h1.title.is-2= place.name
@@ -54,7 +55,8 @@ block content
 								.message-header
 									p
 										span.user-name= author.name
-										span.user-date= ', ' +  author.date + '.'
+										small.user-date= ', '
+											+formatDate(author.date)
 
 									p.place-rate
 										+placeRating( author.rating )

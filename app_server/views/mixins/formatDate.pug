@@ -1,0 +1,9 @@
+mixin formatDate(dateString)
+	- var date = new Date(dateString);
+	- var monthNames = ['Січеня', 'Лютого', 'Березня', 'Квітня', 'Травня', 'Червня', 'Липня', 'Серпня', 'Вересня', 'Жовтня', 'Листопада','Грудня'];
+	- var d = date.getDate();
+	- var m = monthNames[date.getMonth()];
+	- var y = date.getFullYear();
+	- var output = d + ' ' + m + ' ' + y;
+
+	= output
