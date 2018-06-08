@@ -5,7 +5,7 @@ var controllerOthers = require('../controllers/others');
 
 /* GET places */
 router.get('/', controllerPlaces.homeList);
-router.get('/place', controllerPlaces.placeInfo);
+router.get('/place/:placeid', controllerPlaces.placeInfo);
 router.get('/place/review/new', controllerPlaces.addReview);
 
 /* GET other pages */

@@ -76,62 +76,36 @@ module.exports.homeList = function (req, res) {
   });
 };
 
-/* GET places page */
-module.exports.placeInfo = function (req, res) {
-  res.render('place-info', {
-    title: 'Places info',
 
-    place: {
-      name: 'Кафе \'Котовичі\'',
-      address: 'Україна, м. Київ, вул. Кота Котовича, буд 9',
-      rating: '5',
-      facilities: ['Їжа', 'Холодні напої', 'Wi-Fi', 'Лаундж зона'],
-      distance: '1500м',
 
-      workHours: [
-        {
-          days: 'Понеділок - П’ятниця',
-          opening: '7.00',
-          closing: '21.00',
-          closed: false
-        },
-        {
-          days: 'Субота',
-          opening: '8.00',
-          closing: '21.00',
-          closed: false
-        },
-        {
-          days: 'Неділя',
-          closed: true
-        }
-      ],
-
-      map: {
-        src: 'images/map.png',
-        alt: 'map'
-      },
-
-      comments: [
-        {
-          name: 'Марина Гапон',
-          date: '2 липня 2018р',
-          rating: '4',
-          comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque risus mi, tempus quis placerat ut, porta nec nulla.'
-        }
-      ],
-
-      sidebar: {
-        title: 'Дане місце є особливим',
-
-        body: [
-          'Притримується принципів унікальності і дружньої атмосфери, позиціонуючи себе як демократичне кафе.',
-          'Наявність власної кухні в, приготування страв із свіжих продуктів (нема заморозки та напівфабрикатів), схема самообслуговування; для клієнта існує можливість створювати свої власні варіанти страв; максимальна візуалізація виготовлення брендових страв; демократична атмосфера закладів; ексклюзивність музичного супроводу.'
-        ]
-      }
-    }
-  });
+var renderPlaceInfoPage = function (req, res, placeInfo) {
+    res.render('place-info', {
+        title: placeInfo.name,
+        place: placeInfo
+    });
 };
+
+/* GET place page */
+module.exports.placeInfo = function (req, res) {
+    var path = '/api/places/' + req.params.placeid;
+    var requestOptions = {
+      url: apiOptions.server + path,
+      method: "GET",
+      json: {}
+    };
+
+    request(requestOptions, function (err, response, body) {
+        var data = body;
+
+        data.coords = {
+          lng: body.coords[0],
+          lat: body.coords[1]
+        };
+
+        renderPlaceInfoPage(req, res, data);
+    });
+};
+
 
 /* GET add review page */
 module.exports.addReview = function (req, res) {
