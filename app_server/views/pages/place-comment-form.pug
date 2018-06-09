@@ -13,20 +13,20 @@ block content
 			.field
 				label.label Ваше ім'я
 				.control
-					input.input.is-primary(type='text', placeholder="Ім'я Прізвище", name="name")
+					input.input.is-primary(type='text', placeholder="Ім'я Прізвище", name="name", required)
 
 			.field
 				label.label Ваша оцінка
 				.control
 					.select.is-primary
-						select(name="rating")
+						select(name="rating", required)
 							- for (var i = 0; i <= 5; i++)
 								option= i
 
 			.field
 				label.label Ваш відгук
 				.control
-					textarea.textarea.is-primary(placeholder="Ваш відгук", name="comment")
+					textarea.textarea.is-primary(placeholder="Ваш відгук", name="comment", maxlength="500", required)
 
 			.field.is-grouped
 				.control
