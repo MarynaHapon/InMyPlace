@@ -51,8 +51,8 @@ block content
 							.level-right
 								a(href='/place/' + place._id + '/comments/new').button.is-primary Залишити відгук
 
-						.message.is-small.is-dark
-							each author in place.comments
+						each author in place.comments
+							.message.is-small.is-dark
 								.message-header
 									p
 										span.user-name= author.name
