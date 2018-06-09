@@ -1,5 +1,5 @@
 doctype html
-html(lang="ru-UA").has-navbar-fixed-top
+html(lang="ru-UA", ng-app="ngInMyPlace").has-navbar-fixed-top
   head
     title InMyPlace - #{title}
     meta(charset='utf-8')
@@ -21,5 +21,5 @@ html(lang="ru-UA").has-navbar-fixed-top
     include ../components/footer
 
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDVbSUU_-tGO2EL_4uQL6l6X8rylsigIjI')
+    script(src='/javascripts/angular.min.js')
     script(src='/javascripts/index.js')
-
