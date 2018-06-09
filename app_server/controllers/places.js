@@ -167,16 +167,21 @@ module.exports.doAddComment = function (req, res) {
         json: postdata
     };
 
-    request(requestOptions, function (err, response, body) {
-        if (response.statusCode === 201) {
-            res.redirect('/place/' + placeid)
-        }
-        else if (response.statusCode === 400 && body.name && body.name === "ValidationError") {
-            res.redirect('/place/' + placeid + '/comments/new?err=val');
-        }
-        else {
-            showError(req, res, response.statusCode);
-        }
-    });
+    if (!postdata.name || !postdata.rating || !postdata.comment) {
+        res.redirect('/place/' + placeid + '/comments/new?err=val');
+    }
+    else {
+        request(requestOptions, function (err, response, body) {
+            if (response.statusCode === 201) {
+                res.redirect('/place/' + placeid)
+            }
+            else if (response.statusCode === 400 && body.name && body.name === "ValidationError") {
+                res.redirect('/place/' + placeid + '/comments/new?err=val');
+            }
+            else {
+                showError(req, res, response.statusCode);
+            }
+        });
+    }
 
 };
