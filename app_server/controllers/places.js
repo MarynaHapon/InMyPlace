@@ -113,7 +113,7 @@ var renderPlaceInfoPage = function (req, res, placeInfo) {
 var showError = function (req, res, status) {
     var title, message;
 
-    if (status === 400) {
+    if (status === 404) {
         title = "404, сторінка не знайдена";
         message = "Схоже, ми не можемо знайти цю сторінку. Вибачте.";
     }
@@ -139,7 +139,8 @@ module.exports.placeInfo = function (req, res) {
 var renderCommentForm = function (req, res, placeInfo) {
     res.render('place-comment-form', {
         title: placeInfo.name,
-        name: placeInfo.name
+        name: placeInfo.name,
+        error: req.query.err
     });
 };
 
@@ -169,6 +170,9 @@ module.exports.doAddComment = function (req, res) {
     request(requestOptions, function (err, response, body) {
         if (response.statusCode === 201) {
             res.redirect('/place/' + placeid)
+        }
+        else if (response.statusCode === 400 && body.name && body.name === "ValidationError") {
+            res.redirect('/place/' + placeid + '/comments/new?err=val');
         }
         else {
             showError(req, res, response.statusCode);

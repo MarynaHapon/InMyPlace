@@ -6,6 +6,10 @@ block content
 	.columns
 		form(action="", method="post", role="form").box.column.is-6-tablet.is-12-mobile.is-offset-3-tablet
 
+			- if (error == "val")
+				.notification.is-warning
+					p Необхідно заповити всі поля!
+
 			.field
 				label.label Ваше ім'я
 				.control
