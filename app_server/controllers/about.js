@@ -11,6 +11,11 @@ if (process.env.NODE_ENV === 'production') {
 var renderAboutPage = function (req, res, responseBody) {
     var data = responseBody[0];
 
+    if (!(responseBody instanceof Array)) {
+        message = 'Помилка пошуку API';
+        responseBody = [];
+    }
+
     res.render('generic-text', {
         about: data
     });
@@ -26,6 +31,8 @@ module.exports.about = function (req, res) {
     };
 
     request(requestOptions, function (err, response, body) {
-        renderAboutPage(req, res, body);
+        if (response.statusCode === 200) {
+            renderAboutPage(req, res, body);
+        }
     });
 };

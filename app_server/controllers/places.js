@@ -97,9 +97,9 @@ module.exports.homeList = function (req, res) {
           for (var i = 0; i < data.length; i++) {
               data[i].distance = formatDistance(data[i].distance);
           }
-      }
 
-      renderHomePage(req, res, data);
+          renderHomePage(req, res, data);
+      }
   });
 };
 

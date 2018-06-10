@@ -107,15 +107,16 @@ module.exports.placesReadOne = function (req, res) {
             .findById(req.params.placeid)
             .exec(function (err, place) {
 
-                if(!place) {
+                if (!place) {
                     sendJsonResponse(res, 404, {
                         "message": "placeid not found"
                     });
+
                     return;
                 }
-
-                else if(err) {
+                else if (err) {
                     sendJsonResponse(res, 404, err);
+
                     return;
                 }
 

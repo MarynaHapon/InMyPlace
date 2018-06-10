@@ -9,7 +9,19 @@ var sendJsonResponse = function (res, status, content) {
 module.exports.aboutInfo = function (req, res) {
     AboutModel
         .find()
-        .exec(function (error, results) {
+        .exec(function (err, results) {
+            if (!results) {
+                sendJsonResponse(res, 404, {
+                    "message": "page about not found"
+                });
+
+                return;
+            }
+            else if (err) {
+                sendJsonResponse(res, 404, err);
+                return;
+            }
+
             sendJsonResponse(res, 200, results);
         });
 };
