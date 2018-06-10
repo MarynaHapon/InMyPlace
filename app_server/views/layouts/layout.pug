@@ -1,5 +1,5 @@
 doctype html
-html(lang="ru-UA", ng-app="ngInMyPlace").has-navbar-fixed-top
+html(lang="ru-UA").has-navbar-fixed-top
   head
     title InMyPlace - #{title}
     meta(charset='utf-8')
@@ -11,7 +11,7 @@ html(lang="ru-UA", ng-app="ngInMyPlace").has-navbar-fixed-top
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
 
 
-  body(ng-controller="inMyPlaceController")
+  body
     include ../components/header
 
     section.section
@@ -19,8 +19,6 @@ html(lang="ru-UA", ng-app="ngInMyPlace").has-navbar-fixed-top
         block content
 
     include ../components/footer
-
-    script(src='/angular/angular.min.js')
-    script(src='/angular/ngInMyPlace.js')
+      
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDVbSUU_-tGO2EL_4uQL6l6X8rylsigIjI')
     script(src='/javascripts/index.js')
