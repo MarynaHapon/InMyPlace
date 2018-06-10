@@ -17,6 +17,7 @@ var renderAboutPage = function (req, res, responseBody) {
     }
 
     res.render('generic-text', {
+        title: data.title,
         about: data
     });
 };
