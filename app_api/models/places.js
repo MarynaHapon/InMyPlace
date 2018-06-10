@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose').set('debug', true);
 
 var imgSchema = new mongoose.Schema({
     src: { type: String, required: true },

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var controllerPlaces = require('../controllers/places');
 var controllerComments = require('../controllers/comments');
-
+var controllerAbout = require('../controllers/about');
 
 /* Places */
 /* READ List */
@@ -32,6 +32,10 @@ router.put('/places/:placeid/comments/:commentid', controllerComments.commentsUp
 
 /* DELETE comment */
 router.delete('/places/:placeid/comments/:commentid', controllerComments.commentsDeleteOne);
+
+/* About */
+/* GET About page */
+router.get('/about', controllerAbout.aboutInfo);
 
 
 module.exports = router;
