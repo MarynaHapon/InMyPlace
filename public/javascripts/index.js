@@ -1,7 +1,5 @@
 (function () {
 
-    angular.module('ngInMyPlace', []);
-
     // google map
     function initMap() {
         var location = {lat: -25.344, lng: 131.036};

@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 var renderHomePage = function (req, res, responseBody) {
+    /**
     var message;
 
     if (!(responseBody instanceof Array)) {
@@ -20,6 +21,7 @@ var renderHomePage = function (req, res, responseBody) {
             message = 'Місць поруч не знайдено'
         }
     }
+    **/
 
     res.render('places-list', {
         title: 'Список особливих місць',
@@ -27,10 +29,10 @@ var renderHomePage = function (req, res, responseBody) {
         pageHeader: {
             title: 'In My Place - це сховище наших особливих місць',
             subtitle: 'Знаходитесь в пошуках особливого місця? Ми можемо вам дещо порадити.'
-        },
+        }
 
-        places: responseBody,
-        message: message
+        //places: responseBody,
+        //message: message
     });
 };
 
@@ -78,6 +80,10 @@ var getPlaceInfo = function (req, res, callback) {
 
 /* GET home page */
 module.exports.homeList = function (req, res) {
+    renderHomePage(req, res);
+};
+/**
+module.exports.homeList = function (req, res) {
   var path = '/api/places';
   var requestOptions = {
     url: apiOptions.server + path,
@@ -102,6 +108,7 @@ module.exports.homeList = function (req, res) {
       renderHomePage(req, res, data);
   });
 };
+**/
 
 var renderPlaceInfoPage = function (req, res, placeInfo) {
     res.render('place-info', {
